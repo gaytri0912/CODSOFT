@@ -1,0 +1,68 @@
+import tkinter as tk
+calculation=" "
+def calculator_operation(sym):
+    global calculation
+    calculation += str(sym)
+    text.delete(1.0,"end")
+    text.insert(1.0,calculation)
+def calculator_value():
+    global calculation
+    try:
+        calculation=str(eval(calculation))
+        text.delete(1.0,"end")
+        text.insert(1.0,calculation)
+    except:
+        clear_calculator()
+        text.insert(1.0,"error")
+    
+def clear_calculator():
+    global calculation
+    calculation=""
+    text.delete(1.0,"end")
+root=tk.Tk()
+root.title("Calculator")
+root.geometry("330x275")
+root.resizable(False,False)
+text=tk.Text(root,height=2, width=21, font=("Arial",20 ))
+text.grid(columnspan=5)
+b20=tk.Button(root,text="C",command=clear_calculator,width=5,font=("Arial",14),bg="powderblue")
+b20.grid(row=2,column=1)
+b1=tk.Button(root,text=".",command=lambda: calculator_operation("."),width=5,font=("Arial",14),bg="powderblue")
+b1.grid(row=2,column=2)
+b2=tk.Button(root,text="%",command=lambda: calculator_operation("%"),width=5,font=("Arial",14),bg="powderblue")
+b2.grid(row=2,column=3)
+b3=tk.Button(root,text="/",command=lambda: calculator_operation("/"),width=5,font=("Arial",14),bg="powderblue")
+b3.grid(row=2,column=4)
+b4=tk.Button(root,text="7",command=lambda: calculator_operation(7),width=5,font=("Arial",14),bg="powderblue")
+b4.grid(row=3,column=1)
+b5=tk.Button(root,text="8",command=lambda: calculator_operation(8),width=5,font=("Arial",14),bg="powderblue")
+b5.grid(row=3,column=2)
+b6=tk.Button(root,text="9",command=lambda: calculator_operation(9),width=5,font=("Arial",14),bg="powderblue")
+b6.grid(row=3,column=3)
+b7=tk.Button(root,text="*",command=lambda: calculator_operation("*"),width=5,font=("Arial",14),bg="powderblue")
+b7.grid(row=3,column=4)
+b8=tk.Button(root,text="4",command=lambda: calculator_operation(4),width=5,font=("Arial",14),bg="powderblue")
+b8.grid(row=4,column=1)
+b9=tk.Button(root,text="5",command=lambda: calculator_operation(5),width=5,font=("Arial",14),bg="powderblue")
+b9.grid(row=4,column=2)
+b10=tk.Button(root,text="6",command=lambda: calculator_operation(6),width=5,font=("Arial",14),bg="powderblue")
+b10.grid(row=4,column=3)
+b11=tk.Button(root,text="-",command=lambda: calculator_operation("-"),width=5,font=("Arial",14),bg="powderblue")
+b11.grid(row=4,column=4)
+b12=tk.Button(root,text="1",command=lambda: calculator_operation(1),width=5,font=("Arial",14),bg="powderblue")
+b12.grid(row=5,column=1)
+b13=tk.Button(root,text="2",command=lambda: calculator_operation(2),width=5,font=("Arial",14),bg="powderblue")
+b13.grid(row=5,column=2)
+b14=tk.Button(root,text="3",command=lambda: calculator_operation(3),width=5,font=("Arial",14),bg="powderblue")
+b14.grid(row=5,column=3)
+b15=tk.Button(root,text="+",command=lambda: calculator_operation("+"),width=5,font=("Arial",14),bg="powderblue")
+b15.grid(row=5,column=4)
+b16=tk.Button(root,text="(",command=lambda: calculator_operation("("),width=5,font=("Arial",14),bg="powderblue")
+b16.grid(row=6,column=1)
+b17=tk.Button(root,text="0",command=lambda: calculator_operation(0),width=5,font=("Arial",14),bg="powderblue")
+b17.grid(row=6,column=2)
+b18=tk.Button(root,text=")",command=lambda: calculator_operation(")"),width=5,font=("Arial",14),bg="powderblue")
+b18.grid(row=6,column=3)
+b19=tk.Button(root,text="=",command=calculator_value,width=5,font=("Arial",14),bg="powderblue")
+b19.grid(row=6,column=4)
+root.mainloop()
